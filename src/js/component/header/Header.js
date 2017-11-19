@@ -1,14 +1,44 @@
 import React from 'react';
 import {Row, Col} from 'antd';
 import {Menu, Icon} from 'antd';
+import {
+    Tabs,
+    Button,
+    message,
+    From,
+    Input,
+    Checkbox
+} from 'antd';
+import {Link} from 'react-router-dom'
+import Form from 'antd/lib/form/Form';
 class Header extends React.Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            current:'top'
+            current: 'top',
+            modalVisible: false,
+            action: 'login',
+            hasLogined: false,
+            userNickName: '',
+            userid: 0
         }
     }
     render() {
+        // let {getFieldProps} = this.props.form;
+        const userShow = this.state.hasLogined
+            ? <Menu.Item key="logout" class="register">
+                    <Button type="primary">{this.state.userNickName}</Button>
+                    &nbsp;&nbsp;
+                    <Link target="_blank">
+                        <Button type="dashed">Your Profile</Button>
+                    </Link>
+                    &nbsp;&nbsp;
+                    <Button>Logout</Button>
+                </Menu.Item>
+            : <Menu.Item key="login" class="register">
+                <Icon type="appstore"/>Login/Logout
+            </Menu.Item>;
+
         return (
             <header>
                 <Row>
@@ -36,6 +66,7 @@ class Header extends React.Component {
                             <Menu.Item key="techlogory">
                                 <Icon type="appstore"/>Techlogory
                             </Menu.Item>
+                            {userShow}
                         </Menu>
                     </Col>
                     <Col span={2}></Col>
@@ -46,4 +77,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default Header = Form.create({})(Header);
