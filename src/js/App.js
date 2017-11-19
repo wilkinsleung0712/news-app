@@ -1,13 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import MediaQuery from 'react-responsive';
+import Index from './Index';
+import MobileIndex from './MobileIndex';
 
+import 'antd/dist/antd.css';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <MediaQuery query="(min-device-width: 1224px)">
+          <Index/>
+        </MediaQuery>
+        <MediaQuery query="(max-device-width: 1224px)">
+          <MobileIndex/>
+        </MediaQuery>
       </div>
     );
   }
