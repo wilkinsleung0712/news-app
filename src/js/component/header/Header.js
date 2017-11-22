@@ -29,7 +29,7 @@ class Header extends React.Component {
     render() {
         const {getFieldDecorator} = this.props.form;
         const userShow = this.state.hasLogined
-            ? <Menu.Item key="logout" class="register">
+            ? <Menu.Item key="logout" className="register">
                     <Button type="primary">{this.state.userNickName}</Button>
                     &nbsp;&nbsp;
                     <Link target="_blank">
@@ -38,7 +38,7 @@ class Header extends React.Component {
                     &nbsp;&nbsp;
                     <Button>Logout</Button>
                 </Menu.Item>
-            : <Menu.Item key="register" class="register">
+            : <Menu.Item key="register" className="register">
                 <Icon type="appstore"/>Login/Logout
             </Menu.Item>;
 
@@ -131,7 +131,7 @@ class Header extends React.Component {
                                                 ]
                                             })(
                                                 <Input
-                                                    prefix={<Icon type = "lock" style = {{ fontSize: 13 }}/>}
+                                                    prefix={< Icon type = "lock" style = {{ fontSize: 13 }}/>}
                                                     type="password"
                                                     placeholder="Confirm Password"/>
                                             )}
@@ -154,15 +154,20 @@ class Header extends React.Component {
         var myFetchOptions = {
             method: 'GET'
         };
-        var formData = this.props.form.getFieldsValue();
+        var formData = this
+            .props
+            .form
+            .getFieldsValue();
         console.log(formData);
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+formData.r_userName+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confirmPassword,myFetchOptions).
-		then(response=>response.json()).then(json=>{
-			this.setState({userNickName:json.NickUserName,userid:json.UserId});
+        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&p" +
+                    "assword=password&r_userName=" + formData.r_userName + "&r_password=" + formData.r_password + "&r_confirmPassword=" + formData.r_confirmPassword, myFetchOptions)
+            .then(response => response.json())
+            .then(json => {
+                this.setState({userNickName: json.NickUserName, userid: json.UserId});
 
-		});
+            });
         this.setModalVisible(true);
-		message.success("Login Success");
+        message.success("Login Success");
     }
 
     handleMenuClick(event) {

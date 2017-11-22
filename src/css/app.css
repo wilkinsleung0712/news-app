@@ -1,18 +1,95 @@
-.logo{
-    align-items: center;
-    display: flex;
-  }
-  
-  .logo img{
-    width: 48px;
-    height: 48px;
-  }
-  
-  .logo span{
-    font-size: 24px;
-    padding-left: 5px;
-  }
+.logo {
+  align-items: center;
+  display: flex;
+}
 
-  .footer {
-    text-align: center;
-  }
+.logo img {
+  width: 48px;
+  height: 48px;
+}
+
+.logo span {
+  font-size: 24px;
+  padding-left: 5px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.register {
+  float: right !important;
+}
+
+
+.ant-menu-horizontal>.ant-menu-item>a, .ant-menu-horizontal>.ant-menu-submenu>a {
+  display: inline-block !important;
+}
+
+.container {
+  padding-top: 10px;
+}
+
+.left-container {
+  width: 400px;
+  float: left;
+}
+
+.carousel {
+  width: 400px;
+  float: left;
+}
+
+
+
+.ant-card{
+  margin-top: 5px !important;
+}
+
+.ant-card-head-title{
+  text-align: left !important;
+}
+.ant-card-body{
+  text-align: left !important;
+}
+
+.tabs_news {
+  padding-left: 10px;
+  width: 460px;
+  float: left;
+}
+
+
+.usercenter {
+    float: right !important;
+}
+
+
+
+
+.imageblock {
+  float: left;
+}
+
+.custom-card {
+  padding: 5px;
+}
+
+.custom-card p {
+  color: #999;
+}
+
+.register{
+float: right !important;
+}
+
+.topNewsList {
+  float: left;
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.ant-card-body {
+  padding: 15px !important;
+}

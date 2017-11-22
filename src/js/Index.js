@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../js/component/header/Header';
 import Footer from '../js/component/footer/Footer';
-import Main from '../js/component/main/Main';
+import MainIndex from '../js/component/main/MainIndex';
 import 'antd/dist/antd.css';
 
 class Index extends React.Component {
@@ -9,7 +9,7 @@ class Index extends React.Component {
     return (
       <div>
        <Header/>
-       <Main/>
+       <MainIndex/>
        <Footer/>
       </div>
     );
