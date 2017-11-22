@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^2.13.10",
     "husky": "^0.14.3",
     "lint-staged": "^5.0.0",
     "prettier": "^1.8.2",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-responsive": "^4.0.0",
     "react-scripts": "1.0.17"
   },
   "lint-staged": {
