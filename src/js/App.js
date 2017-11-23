@@ -2,6 +2,11 @@ import React from 'react';
 import MediaQuery from 'react-responsive';
 import Index from './Index';
 import MobileIndex from './MobileIndex';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 import 'antd/dist/antd.css';
 
