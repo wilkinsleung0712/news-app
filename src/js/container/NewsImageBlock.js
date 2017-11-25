@@ -23,15 +23,19 @@ class NewsImageBlock extends React.Component {
 
     render() {
         const styleImage = {
+            // start new line and go as far as it can on display block
             display: "block",
             width: this.props.imageWidth,
             height: "90px"
         };
 
         const styleH3 = {
+            // control the text width
             width: this.props.imageWidth,
             whiteSpace: "nowrap",
+            // control the overflow hidden for too much text
             overflow: "hidden",
+            // control the ... to represent the over text
             textOverflow: "ellipsis"
         }
         const {news} = this.state;
@@ -40,9 +44,7 @@ class NewsImageBlock extends React.Component {
                 <div key={index} className="imageblock">
                     <Router>
                         <Link to={`/details/${newsItem.uniquekey}`} target="_blank">
-                            <div  class="custom-image">
-                                <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s}/>
-                            </div>
+                            <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s}/>
                             <div className="custom-card">
                                 <h3 style={styleH3}>{newsItem.title}</h3>
                                 <p>{newsItem.author_name}</p>

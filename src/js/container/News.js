@@ -20,21 +20,16 @@ export class NewsContainer extends React.Component {
                 <Row>
                     <Col span={2}></Col>
                     <Col span={20} className="container">
-                        <div className="left-container">
+                        <div className="leftContainer">
                             <div className="carousel">
                                 <Carousel {...settings}>
                                     <div>
-                                        <img src="./images/carousel_1.jpg"/>
-                                    </div>
+                                        <img src="./images/carousel_1.jpg"/></div>
+                                    <div><img src="./images/carousel_2.jpg"/></div>
                                     <div>
-                                        <img src="./images/carousel_2.jpg"/>
-                                    </div>
+                                        <img src="./images/carousel_3.jpg"/></div>
                                     <div>
-                                        <img src="./images/carousel_3.jpg"/>
-                                    </div>
-                                    <div>
-                                        <img src="./images/carousel_4.jpg"/>
-                                    </div>
+                                        <img src="./images/carousel_4.jpg"/></div>
                                 </Carousel>
                             </div>
                             <NewsImageBlock
@@ -44,15 +39,28 @@ export class NewsContainer extends React.Component {
                                 title="国际头条"
                                 imageWidth="112px"/>
                         </div>
-                        <Tabs className="tabs_news" defaultActiveKey="top">
-                            <TabPane tab="news" key="top">
-                                <NewsBlock count={22} type="top" width="100%" bordered="false"></NewsBlock>
+                        <Tabs className="tabs_news">
+                            <TabPane tab="头条新闻" key="1">
+                                <NewsBlock count={22} type="top" width="100%" bordered="false"/>
                             </TabPane>
-                            <TabPane tab="national" key="national">
-                                <NewsBlock count={22} type="guoji" width="100%" bordered="false"></NewsBlock>
+                            <TabPane tab="国际" key="2">
+                                <NewsBlock count={22} type="guoji" width="100%" bordered="false"/>
                             </TabPane>
                         </Tabs>
-
+                        <div>
+                            <NewsImageBlock
+                                count={8}
+                                type="guonei"
+                                width="100%"
+                                title="国内新闻"
+                                imageWidth="132px"/>
+                            <NewsImageBlock
+                                count={16}
+                                type="yule"
+                                width="100%"
+                                title="娱乐新闻"
+                                imageWidth="132px"/>
+                        </div>
                     </Col>
                     <Col span={2}></Col>
                 </Row>
