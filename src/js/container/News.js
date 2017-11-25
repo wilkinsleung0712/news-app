@@ -24,12 +24,17 @@ export class NewsContainer extends React.Component {
                             <div className="carousel">
                                 <Carousel {...settings}>
                                     <div>
-                                        <img src="./images/carousel_1.jpg"/></div>
-                                    <div><img src="./images/carousel_2.jpg"/></div>
+                                        <img src="./images/carousel_1.jpg"/>
+                                    </div>
                                     <div>
-                                        <img src="./images/carousel_3.jpg"/></div>
+                                        <img src="./images/carousel_2.jpg"/>
+                                    </div>
                                     <div>
-                                        <img src="./images/carousel_4.jpg"/></div>
+                                        <img src="./images/carousel_3.jpg"/>
+                                    </div>
+                                    <div>
+                                        <img src="./images/carousel_4.jpg"/>
+                                    </div>
                                 </Carousel>
                             </div>
                             <NewsImageBlock
