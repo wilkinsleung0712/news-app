@@ -22,11 +22,13 @@ class MobileIndex extends React.Component {
         <MobileHeader/>
         <Tabs defaultActiveKey="top" onChange={this.handleTabClick()}>
           <TabPane tab="Top News" key="top">
-            <div class="carousel">
+            <div className="carousel">
               <Carousel {...settings}>
                 <div>
                   <img src="./images/carousel_1.jpg"/></div>
-                <div><img src="./images/carousel_2.jpg"/></div>
+                <div>
+                  <img src="./images/carousel_2.jpg"/>
+                </div>
                 <div>
                   <img src="./images/carousel_3.jpg"/></div>
                 <div>
