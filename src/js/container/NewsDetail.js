@@ -3,6 +3,7 @@ import {Row, Col, BackTop} from 'antd';
 import Header from '../component/header/Header';
 import Footer from '../component/footer/Footer';
 import NewsImageBlock from '../container/NewsImageBlock';
+import CommonComments from '../component/common/CommonComments'
 
 class NewsDetail extends React.Component {
 
@@ -38,6 +39,8 @@ class NewsDetail extends React.Component {
                     <Col span={2}></Col>
                     <Col span={14} className="container">
                         <div className="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
+                        <hr/>
+                        <CommonComments uniquekey={this.props.match.params.uniquekey}/>
                     </Col>
                     <Col span={6}>
                         <NewsImageBlock

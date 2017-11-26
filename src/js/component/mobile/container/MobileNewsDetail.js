@@ -2,6 +2,7 @@ import React from 'react';
 import {Row, Col, BackTop} from 'antd';
 import MobileHeader from '../header/MobileHeader';
 import MobileFooter from '../footer/MobileFooter';
+import CommonComment from '../../common/CommonComments'
 
 class MobileNewsDetail extends React.Component {
 
@@ -42,6 +43,8 @@ class MobileNewsDetail extends React.Component {
                         </Col>
                     </Row>
                 </div>
+                <hr/>
+                <CommonComment uniquekey={this.props.match.params.uniquekey}/>
                 <MobileFooter/>
                 <BackTop/>
             </div>
