@@ -1,49 +1,63 @@
 import React from 'react';
-import {Row, Col} from 'antd';
+import {Row, Col, BackTop} from 'antd';
+import Header from '../component/header/Header';
+import Footer from '../component/footer/Footer';
+import NewsImageBlock from '../container/NewsImageBlock';
+import CommonComments from '../component/common/CommonComments'
 
-class NewsDetail extends React.Component{
+class NewsDetail extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            newsItem:''
+            newsItem: ''
         }
     }
 
-    componentWillMount(){
+    componentDidMount() {
         var fetchOptions = {
-            method:'GET'
-        }
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnewsitem&uniquekey="+ this.props.params.uniquekey,fetchOptions)
-        .then(resp=>resp.json())
-        .then(data=>this.setState({new:data}));
-
-        document.title = this.state.newsItem.title + " - React News | React 驱动的新闻平台";
+            method: 'GET'
+        };
+        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnewsitem&uniquekey=" + this.props.match.params.uniquekey, fetchOptions)
+            .then(resp => resp.json())
+            .then(data => {
+                this.setState({newsItem: data})
+                document.title = this.state.newsItem.title + " - React News | React 驱动的新闻平台";
+            });
 
     }
 
     createMarkup() {
-		return {__html: this.state.newsItem.pagecontent};
-	};
+        return {__html: this.state.newsItem.pagecontent};
+    };
 
-    render(){
+    render() {
         return (
             <div>
+                <Header/>
                 <Row>
-                    <Col span={2}>
-                    </Col>
+                    <Col span={2}></Col>
                     <Col span={14} className="container">
-                        <div className="articleContainer" angerouslySetInnerHTML={this.createMarkup()}></div>
+                        <div className="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
+                        <hr/>
+                        <CommonComments uniquekey={this.props.match.params.uniquekey}/>
                     </Col>
                     <Col span={6}>
+                        <NewsImageBlock
+                            count={40}
+                            type="top"
+                            width="100%"
+                            title="related News"
+                            imageWidth="150px"/>
                     </Col>
-                    <Col span={2}>
-                    </Col>
-                    
+                    <Col span={2}></Col>
+
                 </Row>
+                <Footer/>
+                <BackTop/>
             </div>
         );
     }
 }
 
-export default NewsDetail
+export default NewsDetail;

@@ -35,11 +35,9 @@ class NewsBlock extends React.Component {
         return (
             <div className="topNewsList">
                 <Card>
-                    <Router>
-                        <ul>
-                            {newsList}
-                        </ul>
-                    </Router>
+                    <ul>
+                        {newsList}
+                    </ul>
                 </Card>
             </div>
         );

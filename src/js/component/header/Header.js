@@ -26,17 +26,32 @@ class Header extends React.Component {
             userid: 0
         }
     }
+
+    componentWillMount() {
+        if (localStorage.length !== 0 && localStorage.userid != '') {
+            this.setState({hasLogined: true});
+            this.setState({userNickName: localStorage.userNickName, userid: localStorage.userid});
+        }
+    };
+
+    logout() {
+        localStorage.userid = '';
+        localStorage.userNickName = '';
+        this.setState({hasLogined: false});
+    };
+
     render() {
         const {getFieldDecorator} = this.props.form;
+        const {getFieldValue} = this.props.form;
         const userShow = this.state.hasLogined
             ? <Menu.Item key="logout" className="register">
                     <Button type="primary">{this.state.userNickName}</Button>
                     &nbsp;&nbsp;
-                    <Link target="_blank">
+                    <Link to="_blank">
                         <Button type="dashed">Your Profile</Button>
                     </Link>
                     &nbsp;&nbsp;
-                    <Button>Logout</Button>
+                    <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>Logout</Button>
                 </Menu.Item>
             : <Menu.Item key="register" className="register">
                 <Icon type="appstore"/>Login/Logout
@@ -86,6 +101,45 @@ class Header extends React.Component {
                             okText="Close">
 
                             <Tabs type="card">
+
+                                <TabPane tab="Login" key="1">
+                                    <Form
+                                        layout="horizontal"
+                                        onSubmit={this
+                                        .handleSubmit
+                                        .bind(this)}>
+                                        <FormItem label="UserName">
+                                            {getFieldDecorator('userName', {
+                                                rules: [
+                                                    {
+                                                        required: true,
+                                                        message: 'Please input your username!'
+                                                    }
+                                                ]
+                                            })(
+                                                <Input
+                                                    prefix={< Icon type = "user" style = {{ fontSize: 13 }}/>}
+                                                    placeholder="Username"/>
+                                            )}
+                                        </FormItem>
+                                        <FormItem label="Password">
+                                            {getFieldDecorator('password', {
+                                                rules: [
+                                                    {
+                                                        required: true,
+                                                        message: 'Please input your Password!'
+                                                    }
+                                                ]
+                                            })(
+                                                <Input
+                                                    prefix={< Icon type = "lock" style = {{ fontSize: 13 }}/>}
+                                                    type="password"
+                                                    placeholder="Password"/>
+                                            )}
+                                        </FormItem>
+                                        <Button type="primary" htmlType="submit">Login</Button>
+                                    </Form>
+                                </TabPane>
                                 <TabPane tab="Register" key="2">
                                     <Form
                                         layout="horizontal"
@@ -159,14 +213,17 @@ class Header extends React.Component {
             .form
             .getFieldsValue();
         console.log(formData);
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&p" +
-                    "assword=password&r_userName=" + formData.r_userName + "&r_password=" + formData.r_password + "&r_confirmPassword=" + formData.r_confirmPassword, myFetchOptions)
+        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action + "&username=" + formData.userName + "&password=" + formData.password + "&r_userName=" + formData.r_userName + "&r_password=" + formData.r_password + "&r_confirmPassword=" + formData.r_confirmPassword, myFetchOptions)
             .then(response => response.json())
             .then(json => {
                 this.setState({userNickName: json.NickUserName, userid: json.UserId});
-
+                localStorage.userid = json.UserId;
+                localStorage.userNickName = json.NickUserName;
             });
-        this.setModalVisible(true);
+        if (this.state.action == "login") {
+            this.setState({hasLogined: true});
+        }
+        this.setModalVisible(false);
         message.success("Login Success");
     }
 
@@ -180,6 +237,19 @@ class Header extends React.Component {
         }
     }
 
+    // handleLogin(event) {      // when page has been submit we should login
+    // event.preventDefault();     var myFetchOptions = {         method: 'GET' };
+    //   var formData = this         .props         .form .getFieldsValue();
+    // fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=" +
+    // this.state.action + "&username=" + formData.userName + "&password=" +
+    // formData.password + "&r_userName=" + formData.r_userName + "&r_password=" +
+    // formData.r_password + "&r_confirmPassword=" + formData.r_confirmPassword,
+    // myFetchOptions)         .then(response => response.json())         .then(json
+    // => {             this.setState({userNickName: json.NickUserName, userid:
+    // json.UserId});             localStorage.userid = json.UserId;
+    // localStorage.userNickName = json.NickUserName;         });     if
+    // (this.state.action == "login") {         this.setState({hasLogined: true});
+    // }     message.success("请求成功！");     this.setModalVisible(false); }
     setModalVisible(status) {
         this.setState({modalVisible: status});
     }

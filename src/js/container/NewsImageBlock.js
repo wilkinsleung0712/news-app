@@ -42,15 +42,13 @@ class NewsImageBlock extends React.Component {
         const newsList = news.length
             ? news.map((newsItem, index) => (
                 <div key={index} className="imageblock">
-                    <Router>
-                        <Link to={`/details/${newsItem.uniquekey}`} target="_blank">
-                            <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s}/>
-                            <div className="custom-card">
-                                <h3 style={styleH3}>{newsItem.title}</h3>
-                                <p>{newsItem.author_name}</p>
-                            </div>
-                        </Link>
-                    </Router>
+                    <Link to={`../details/${newsItem.uniquekey}`} target="_blank">
+                        <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s}/>
+                        <div className="custom-card">
+                            <h3 style={styleH3}>{newsItem.title}</h3>
+                            <p>{newsItem.author_name}</p>
+                        </div>
+                    </Link>
                 </div>
             ))
             : 'nothing to load';
